@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  
+  
+ div.wrapper 
+  div.navbar.navbar-inverse
+   div.container-fluid
+    div.navbar-header
+
+    div
+     ul.nav.navbar-nav.navbar-right
+      li 
+       a(href="/register", class='glyphicon glyphicon-share-alt navbar-brand') register
+
+     h1 #{title}
+     
+
+  form(action="/processLogin", method="post")
+   input(type="text", name="username", placeholder='username')
+   input(type="password", name="pwd", placeholder='password')
+   input(type="submit", name="submit", value="login").btn.btn-info
