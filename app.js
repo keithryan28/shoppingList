@@ -34,8 +34,12 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+
 app.use(express.cookieParser('mongodb'));
 app.use(express.session());
+
+app.use(express.bodyParser());
+
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -47,7 +51,10 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/register', routes.register);
 app.post('/registerUser', routes.registerUser);
+app.get('/processLogin', routes.processLogin);
 app.get('/users', user.list);
+app.get('/listDisplay', routes.listDisplay);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
